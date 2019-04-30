@@ -8,7 +8,7 @@ class Home extends Component {
     datasets: [
       {
         label: "Lautstärke, Dezibel",
-        backgroundColor: "#21a4d0",
+        backgroundColor: "rgba(0,102,255,0.1)",
         borderColor: "rgb(128, 185, 188)",
         borderWidth: 1,
         data: [1, 5, 6, 8, 5, 7, 8, 5, 6, 8, 4]

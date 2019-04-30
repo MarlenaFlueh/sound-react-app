@@ -23,7 +23,7 @@
 }
 
 .Auth-form {
-    background-color: ivory;
+    background-color: #ccc;
     margin: 20px auto;
     width: 20%;
     text-align: center;
@@ -33,10 +33,54 @@
     box-sizing: border-box;
 }
 
-.input {
-  background-color: fffff;
+.Controller-form {
+  background-color: #ccc;
+  margin: 20px auto;
+  width: 30%;
+  text-align: center;
+  box-shadow: 0 2px 3px #ccc;
   border: 1px solid #eee;
-  margin: 5px;
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+.controller-input {
+  width: 100%;
+    padding: 10px;
+    box-sizing: border-box;
+    font-weight: bold;
+    display: block;
+    margin-bottom: 8px;
+    outline: none;
+    border: 1px solid #ccc;
+    background-color: #ffffff;
+    font: inherit;
+    padding: 6px 10px;
+    display: block;
+    box-sizing: border-box;
+    color: black;
+}
+
+.input {
+  width: 100%;
+    padding: 10px;
+    box-sizing: border-box;
+    font-weight: bold;
+    display: block;
+    margin-bottom: 8px;
+    outline: none;
+    border: 1px solid #ccc;
+    background-color: #ffffff;
+    font: inherit;
+    padding: 6px 10px;
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
+    color: black;
+}
+
+.Login-failed {
+  color: red;
 }
 
 
