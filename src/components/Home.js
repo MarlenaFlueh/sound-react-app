@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Line } from 'react-chartjs-2';
 import './Home.css';
+import { getChartData } from './data';
 
 class Home extends Component {
   data = {
@@ -14,6 +15,10 @@ class Home extends Component {
         data: [1, 5, 6, 8, 5, 7, 8, 5, 6, 8, 4]
       }
     ]
+  }
+
+  async componentDidMount() {
+    const res = await getChartData();
   }
 
   redirectToTarget = () => {
