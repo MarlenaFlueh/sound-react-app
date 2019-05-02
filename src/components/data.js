@@ -10,7 +10,7 @@ export const getChartData = async () => {
 
 export const sendGrenzwert = async (value) => {
     const res = await axios.post(raspbiApi, {
-        value
+        "0": value
     });
     return res.data;
 };
