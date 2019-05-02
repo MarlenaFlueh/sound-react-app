@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { sendGrenzwert } from './data';
 
 class Login extends Component {
 
@@ -19,7 +20,7 @@ class Login extends Component {
     }
 
     getAuthForm = () => (
-        <div className="Auth-form">
+        <form onSubmit={this.controllerLogin} className="Auth-form">
             {this.state.valid ? <p>Login zum modifizieren.</p> : <p className="Login-failed">Please try again.</p>}
             <input
                 className="input"
@@ -31,9 +32,15 @@ class Login extends Component {
                 onChange={event => this.setState({ password: event.target.value })}
             ></input>
             <br></br>
-            <button onClick={this.controllerLogin}>Login</button>
-        </div>
+            <button type="submit" >Login</button>
+        </form>
     )
+
+    changeGrenzwert = async () => {
+        alert('Ein Grenzwert wurde gesetzt.');
+        const res = await sendGrenzwert(this.state.value);
+        console.log(res);
+    }
 
     getControllerGui = () => (
         <div className="Controller-form">
@@ -43,7 +50,7 @@ class Login extends Component {
                 value={this.state.value}
                 onChange={event => this.setState({ value: event.target.value })}
             ></input>
-            <button>Grenzwert ändern.</button>
+            <button type="button" onClick={this.changeGrenzwert}>Grenzwert ändern</button>
         </div>
     )
 
@@ -56,9 +63,9 @@ class Login extends Component {
                         Der Chart dokumentiert in Dezibel die Lautstärke in der Klasse.
                     </p>
                 </header>
-                <body className="App">
+                <div className="App">
                     {this.state.authentificated ? this.getControllerGui() : this.getAuthForm()}
-                </body>
+                </div>
             </div>
         )
     };

@@ -4,21 +4,34 @@ import './Home.css';
 import { getChartData } from './data';
 
 class Home extends Component {
-  data = {
-    labels: [1, 3, 5, 6, 5, 8, 5, 6, 8, 4],
-    datasets: [
-      {
-        label: "Lautstärke, Dezibel",
-        backgroundColor: "rgba(0,102,255,0.1)",
-        borderColor: "rgb(128, 185, 188)",
-        borderWidth: 1,
-        data: [1, 5, 6, 8, 5, 7, 8, 5, 6, 8, 4]
-      }
-    ]
+
+  state = {
+    chartData: {
+      labels: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+      datasets: [
+        {
+          label: "Lautstärke, Dezibel",
+          backgroundColor: "rgba(0,102,255,0.1)",
+          borderColor: "rgb(128, 185, 188)",
+          borderWidth: 1,
+          data: [100, 100, 100, 100, 100, 100, 100, 100, 100, 100]
+        }
+      ]
+    }
   }
 
   async componentDidMount() {
     const res = await getChartData();
+    const dataArray = res.results[0].series[0].values
+    const data = dataArray.map(item => item[1])
+    console.log(data)
+
+    this.setState(prevState => ({
+      chartData: {
+        ...prevState.chartData,
+        datasets: prevState.chartData.datasets.map(set => ({ ...set, data }))
+      }
+    }));
   }
 
   redirectToTarget = () => {
@@ -42,14 +55,14 @@ class Home extends Component {
             Login to Controller
         </a>
         </header>
-        <body className="App-body">
+        <div className="App-body">
           <Line
-            data={this.data}
+            data={this.state.chartData}
             width={400}
             height={400}
             options={{ maintainAspectRatio: false }}
           />
-        </body>
+        </div>
       </div>
     )
   };
