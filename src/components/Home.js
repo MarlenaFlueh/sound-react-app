@@ -23,7 +23,7 @@ class Home extends Component {
   async componentDidMount() {
     const res = await getChartData();
     const dataArray = res.results[0].series[0].values
-    const data = dataArray.map(item => item[1])
+    const data = dataArray.map(item => Math.round(item[2], 2))
     console.log(data)
 
     this.setState(prevState => ({
